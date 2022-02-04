@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Programming/20-30/basics-assignment-2-problem"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "basics-05-using-the-native-event-object"
+	}
+}

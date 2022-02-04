@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click = "add(5)">Add 5</button>
+      <button v-on:click = "reduce(5)">Subtract 5 </button>
+      <p>Result: {{ counter }}</p>
+      <input type ="text" v-on:input ="setName($event, 'edgington')" v-on:keyup.enter="confirmedInput">
+
+      <!-- I can use $event to target the default event object even where there's other arguments
+        
+        was having issue with v-on:input, realized it was because spacing input goes directly after colon -->
+
+      <!-- v-on = I want to listen to this input event in the input element 
+        - best event to listen to on html element 
+        - default dom event available on input elements
+      
+      
+      Parts rerendered by browser flashes, only parts that change the code are rerendered on the screen
+    if Vue would update the entire screen whenever something changed somewhere, this would be bad for performance
+  instead vue is smart and sees that with every keystroke on the name changes and hence it 
+only finds the places that use the name, in this case the P tag and updates that
+The rest is left untouced and performance is improved 
+
+
+Note default event object
+  - could have scenario need to call method explicity on our own
+for example because we need to pass another argument 
+e.g. second name is lastName
+
+problem with this is we no longer get default event ojbect as first arguemnt
+to pass that in there's a special variable we can use 
+
+it's $event - reserved name, variable given to us to give access to build in default event object
+which we get automatically by the browser 
+so we can use it in the code and still pass it in as a first argument to set name 
+if we wanted to 
+
+Whenever we find outselves using an arugemnt here and can't just point to the object, 
+we can access it with the $event 
+Sometimes you need access to the built in object automatically but then also access the code explcitly 
+to pass in our own arguments. 
+
+-->
+      <p> Your Name: {{ confirmedName }} </p>
+      <form v-on:submit.prevent="submitForm">
+
+        <!-- .prevent is a event modifier - full list in official docs 
+        prevent 
+      
+      which can be done in javascript (submitForm(){ alert ('submitted'); it replaces that by just doing modifer})
+    this can also extend to buttons
+  
+  v.on:click.right - you only want reaction to right click  (left, middle, etc)
+-->
+
+        <input type="text">
+        <button> Sign Up</button>
+      </form>
+    </section>
+  </body>
+</html>
